@@ -26,6 +26,37 @@ The project structure is organized as follows:
 
 - `./test/`: This folder seems to be intended for test-related code.
 
+## Setup ocaml
+
+1. **Install opam:** It's easy to install opam with your system's package manager on Linux:
+   ```
+   # Ubuntu and Debian:
+   $ apt install opam
+
+   # Archlinux
+   $ pacman -S opam
+   ```
+
+2. **Initialize opam** and **Create an opam switch**:
+    ```
+    $ opam init          # Can take some time
+    $ eval $(opam env)
+    ```
+    ```
+    $ opam switch create 4.14.0
+    $ eval $(opam env)
+    ```
+
+3. **Install Base**: Base is a library that is used in this setup only for demonstration purposes, to see how it works even with external libraries:
+    ```
+    $ opam install base
+    ```
+
+4. (optional) **OCaml Platform Tools on Unix**: All these tools can be installed in your current switch:
+    ```
+    $ opam install dune merlin ocaml-lsp-server odoc ocamlformat utop dune-release
+    ```
+
 ## Getting Started
 
 1. **Clone the Repository:** Clone this repository to your local machine using the following command:
@@ -41,11 +72,21 @@ The project structure is organized as follows:
         $ ocamlbuild -use-ocamlfind main.native 
         $ ./main.native
         ```
+        eventually,
+        ```
+        $ ocamlbuild -clean
+        ```
     - To compile your code and create an executable with `ocamlopt`, run:
         ```
         $ ocamlfind ocamlopt -o main.cmo -linkpkg -package base -I bin bin/bin_file.ml main.ml
         $ ./main.cmo
         ```
+
+## Useful command
+
+`ocamlfind list`
+
+`opam list`
 
 ## Contributing
 
